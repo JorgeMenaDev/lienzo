@@ -1,0 +1,40 @@
+# Bun and local Convex hydration
+
+Read repository instructions first. This contract begins only after `storage-preflight.sh` emits `HYDRATE_ALLOWED: yes`.
+
+## 1. Copy local environment
+
+Resolve helpers against this skill directory. Use `<skill-dir>/scripts/copy-env-local.sh <primary-checkout> <worktree>` on first creation or when files are missing. It copies files named exactly `.env.local` only when both checkouts ignore the path, excludes provider/database/build state, and strips only true Convex keys: every plain single-line assignment whose variable name is `CONVEX_`-prefixed, plus the exact Convex deploy/URL-style keys `NEXT_PUBLIC_CONVEX_URL`, `NEXT_PUBLIC_CONVEX_SITE_URL`, and `QA_CONVEX_ADMIN_KEY`. Clerk/auth vars are kept even when the name contains `CONVEX`, e.g. `CLERK_CONVEX_JWT_TEMPLATE`. Copied `WORKTREE_ID`, `WORKTREE_APP_PORT`, `WORKTREE_CONVEX_CLOUD_PORT` and `WORKTREE_CONVEX_SITE_PORT` assignments are rewritten to the target worktree's own values (`scripts/worktree-ports.sh`, the same derivation `worktree-dev.sh` uses, which never yields 8081; 3214/3215 are below its range), so a hand-hydrated worktree never inherits the source's ports. An existing target `.env.local` is protected and keeps its values; delete it and copy again to re-derive. Quoted, backtick, or continued Convex assignments block the copy. Never overwrite a warm `local-main` target merely to refresh it or print values.
+
+Prefer a runtime-neutral repository `setup:worktree` command when present and verify the same result.
+
+## 2. Install deterministically
+
+Run `bun install --frozen-lockfile` at the monorepo root using the declared Bun version. A lockfile change is a bootstrap failure.
+
+## 3. Allocate isolated runtime identity
+
+Derive the identity and ports from the worktree path with the shared helper, so they match what `copy-env-local.sh` wrote into `.env.local`:
+
+```bash
+source <skill-dir>/scripts/worktree-ports.sh
+derive_worktree_ports "$worktree"   # exports WORKTREE_ID, WORKTREE_APP_PORT, WORKTREE_CONVEX_CLOUD_PORT, WORKTREE_CONVEX_SITE_PORT
+```
+
+`local-main` gets its identity the same way. If a derived port is already bound by another process, stop and report it; never take a port you don't own.
+
+Use unique Portless routes. One proxy may be shared; routes, app ports, Convex ports, and databases may not.
+
+## 4. Create and classify local Convex state
+
+Run the repository bootstrap with the explicit runtime identity and ports. Otherwise inspect the pinned CLI help and create a fresh local deployment. Require `local:*`, loopback URLs, state beneath this worktree, and no cloud deploy/admin key.
+
+After creating a blank deployment or applying only documented synthetic seeds, require `.convex/state-kind` to be ignored and write `synthetic` there. Change it to `durable` immediately when user-created, imported, or otherwise valuable data enters the database. Missing, invalid, or uncertain classification is treated as durable.
+
+Use documented local seeds only; never import production/shared-dev data. Disable long-running Convex codegen after deliberate bootstrap when supported. Run codegen deliberately for schema/API changes.
+
+## 5. Start, smoke, and stop
+
+Use the repository launcher, keep logs per worktree, and prove owned listeners, URLs, local selectors, and a clean tracked checkout. Authenticate in a fresh signed-out browser context when needed.
+
+Leave servers running only when the user asked for a reachable live surface. Otherwise stop the worktree-owned stack after proof and continue to `LIFECYCLE.md`.

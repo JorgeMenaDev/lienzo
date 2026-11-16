@@ -1,0 +1,20 @@
+@layer ui-sdk;
+@import "tailwindcss";
+
+@theme {
+  --font-ui: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* A design renders as it would in its own app: none of the chrome's text styles inherit into it. */
+@layer base {
+  [data-design] {
+    font-family: var(--default-font-family);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: normal;
+    font-variant-numeric: normal;
+    text-transform: none;
+    color: CanvasText;
+  }
+}

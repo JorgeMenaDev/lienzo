@@ -1,0 +1,71 @@
+{
+  "version": 2,
+  "skills": {
+    "babysit-pr": {
+      "source": "t3dotgg/tstack",
+      "sourceType": "github",
+      "skillPath": "skills/babysit-pr/SKILL.md",
+      "computedHash": "b6f349b95dbf4cce64cf61608b4ed9a98ce3725afe29676e6614efc8dccb5c29"
+    },
+    "diagnosing-bugs": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/diagnosing-bugs/SKILL.md",
+      "computedHash": "87c78ae966e591f9ceb177789cc5cc9de69277cd26679ffd36ca5300f430d513"
+    },
+    "file-pr": {
+      "source": "JorgeMenaDev/skills",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/file-pr/SKILL.md",
+      "computedHash": "33e320e6a0d4c762f756f46761262cadec9793a04f028b1b2662583a1ade02d3"
+    },
+    "full-send": {
+      "source": "t3dotgg/tstack",
+      "sourceType": "github",
+      "skillPath": "skills/full-send/SKILL.md",
+      "computedHash": "dd66dd22c76558f50c722c26432e713468a68599fb0db0eb2d9e50bbebdbd3f8"
+    },
+    "full-stop": {
+      "source": "t3dotgg/tstack",
+      "sourceType": "github",
+      "skillPath": "skills/full-stop/SKILL.md",
+      "computedHash": "97cd08646e1f9bbb89bf18bf131982ee66df7834cce071bc5385e8fc4f5a60a9"
+    },
+    "leaving-pr-comments": {
+      "source": "t3dotgg/tstack",
+      "sourceType": "github",
+      "skillPath": "skills/leaving-pr-comments/SKILL.md",
+      "computedHash": "aa96b3df788cf8125aa202ad54bebbd91878a0218eae94c8035536d7bda026a2"
+    },
+    "sol-loop": {
+      "source": "t3dotgg/tstack",
+      "sourceType": "github",
+      "skillPath": "skills/sol-loop/SKILL.md",
+      "computedHash": "579718e954d9edc00de37bdc4666475bcebb5c398b4d8f608f8251a1599bc6f6"
+    },
+    "tdd": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/tdd/SKILL.md",
+      "computedHash": "e3e0f78ff1c2d52ffefa0378baa1e80e129d359288cf9a56f4e59afcd2aac86c"
+    },
+    "ui-sdk": {
+      "source": "vercel-labs/ui",
+      "sourceType": "github",
+      "skillPath": "packages/core/skills/ui-sdk/SKILL.md",
+      "computedHash": "eb97c7bee8d312d062ab419e621835c9e8293cb321e3087f3430ac1cdf634fc4"
+    },
+    "upload-file": {
+      "source": "JorgeMenaDev/skills",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/upload-file/SKILL.md",
+      "computedHash": "ee037dbe3974da4bb640b6ee1cab736c14df9f60df04ea6f5e5e249013654cda"
+    },
+    "using-git-worktrees": {
+      "source": "JorgeMenaDev/skills",
+      "sourceType": "github",
+      "skillPath": "skills/software-development/using-git-worktrees/SKILL.md",
+      "computedHash": "89e0c5f14661879fdfe724ceb9e8a0fc71ebe3f93c74568e54f7e49ec11d786b"
+    }
+  }
+}
